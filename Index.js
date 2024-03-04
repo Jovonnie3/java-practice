@@ -54,4 +54,4 @@ const parksJSON = JSON.stringify(parks);
 
 console.log("Name:", parks[0].name);
 console.log("Facilities:", parks[0].facilities);
-console.log("Species of the third item:", parks[2].trees.map(tree => tree.species)); 
+console.log("Species of the third item:", parks[2].trees.map(tree => tree.species));
