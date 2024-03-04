@@ -23,33 +23,36 @@ let parks = [
             { species: "Pine", age: 10, health: "Fair", height: 15 }
         ],
         facilities: ["hiking trails"]
-    }];
+    }
+];
+
 const riversideParkIndex = parks.findIndex(park => park.name === "Riverside Park");
 if (riversideParkIndex !== -1) {
-  parks[riversideParkIndex].name = "Riverside Greenspace" ;
+    parks[riversideParkIndex].name = "Riverside Greenspace";
 }
-const centralPark = parks.find(park => park.name === "central Park");
+
+const centralPark = parks.find(park => park.name === "Central Park");
 if (centralPark) {
-  const mapleTreeIndex = centralPark.trees.findIndex(tree =>tree.species === "Maple");
-  if (mapleTreeIndex !== -1) {
-    centralPark.trees[mapleTreeIndex].species = "Sugar Maple";
-  }
+    const mapleTreeIndex = centralPark.trees.findIndex(tree => tree.species === "Maple");
+    if (mapleTreeIndex !== -1) {
+        centralPark.trees[mapleTreeIndex].species = "Sugar Maple";
+    }
+    
+    const newTree = { species: "Birch", age: 7, health: "Good", height: 18 };
+    centralPark.trees.push(newTree);
+
+    const centralParkFacilitiesIndex = centralPark.facilities.indexOf("playground");
+    if (centralParkFacilitiesIndex !== -1) {
+        centralPark.facilities.splice(centralParkFacilitiesIndex, 1);
+    }
 }
-const newTree = { species: "Birch", age: 7, health: "good", height: 18 };
-centralPark.trees.push(newTree);
 
-const centralParkTrees = centralPark.trees.map(tree => tree.species);
-
-const totalTreeAge = parks.reduce((acc,park) => acc + park.trees.reduce((total, tree) => total + tree.age, 0), 0);
+const totalTreeAge = parks.reduce((acc, park) => acc + park.trees.reduce((total, tree) => total + tree.age, 0), 0);
 const averageTreeAge = totalTreeAge / (parks.reduce((acc, park) => acc + park.trees.length, 0));
 
 const allTrees = parks.flatMap(park => park.trees);
 const tallestTree = allTrees.reduce((tallest, tree) => tree.height > tallest.height ? tree : tallest);
 
-const centralParkFacilitiesIndex = centralPark.facilities.index0f("playground");
-if (centralParkFacilitiesIndex !== -1) {
-  centralPark.facilities.splice(centralParkFacilitiesIndex, 1);
-}
 const parksJSON = JSON.stringify(parks);
 
 console.log("Name:", parks[0].name);
